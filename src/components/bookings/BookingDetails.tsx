@@ -104,8 +104,12 @@ export default function BookingDetails({
         {/* Drawer Header */}
         <div className="flex items-center justify-between border-b border-[#EAE1D4] bg-white px-6 py-5">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 border border-[#B89555]/30 text-[#C66A24]">
-              <Sparkles size={20} />
+            <div className="relative flex h-11 w-11 items-center justify-center rounded-xl overflow-hidden bg-[#34251E] border border-[#B89555]/40 p-0.5 shadow-sm">
+              <img
+                src="/images/ram-transparent.png"
+                alt="Sacred Seva"
+                className="h-full w-full object-contain filter drop-shadow-[0_0_5px_rgba(255,165,0,0.6)]"
+              />
             </div>
             <div>
               <div className="flex items-center gap-2">

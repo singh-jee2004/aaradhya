@@ -9,11 +9,6 @@ import {
   ResponsiveContainer,
   Tooltip,
   Legend,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
 } from 'recharts';
 import { PieChart as ChartIcon } from 'lucide-react';
 

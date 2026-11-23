@@ -115,10 +115,25 @@ export default function OverviewPage() {
       <div className="space-y-6">
         {/* Welcome Spiritual Banner */}
         <div className="relative overflow-hidden rounded-2xl border border-[#B89555]/40 bg-gradient-to-r from-[#FAF7F0] via-[#F4E8D1]/60 to-[#FAF7F0] p-6 shadow-xs">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          {/* Subtle Ram Artwork Watermark in background */}
+          <div className="absolute -right-6 -bottom-10 h-52 w-52 opacity-[0.16] pointer-events-none mix-blend-multiply select-none">
+            <img
+              src="/images/ram-transparent.png"
+              alt=""
+              className="h-full w-full object-contain filter drop-shadow-[0_0_12px_rgba(198,106,36,0.6)]"
+            />
+          </div>
+
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#C66A24]">
-                <Sparkles size={14} />
+                <div className="h-4 w-4 overflow-hidden rounded bg-[#34251E] flex items-center justify-center p-0.5">
+                  <img
+                    src="/images/ram-transparent.png"
+                    alt="Seva"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
                 <span>Devotee Management Platform</span>
               </div>
               <h2 className="font-serif text-2xl font-bold text-[#34251E] mt-1">

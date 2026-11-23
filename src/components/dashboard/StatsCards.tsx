@@ -6,7 +6,6 @@ import {
   CheckCircle2,
   CheckCheck,
   IndianRupee,
-  TrendingUp,
 } from 'lucide-react';
 
 interface StatsCardsProps {
@@ -20,7 +19,6 @@ export default function StatsCards({ stats, loading = false }: StatsCardsProps) 
       title: 'Total Bookings',
       value: stats.totalBookings,
       icon: CalendarDays,
-      color: 'from-amber-600 to-amber-700',
       bgColor: 'bg-amber-50',
       textColor: 'text-amber-800',
       borderColor: 'border-amber-200/80',
@@ -30,7 +28,6 @@ export default function StatsCards({ stats, loading = false }: StatsCardsProps) 
       title: 'Pending Bookings',
       value: stats.pendingBookings,
       icon: Clock,
-      color: 'from-amber-500 to-orange-500',
       bgColor: 'bg-amber-50/70',
       textColor: 'text-amber-700',
       borderColor: 'border-amber-200',
@@ -40,7 +37,6 @@ export default function StatsCards({ stats, loading = false }: StatsCardsProps) 
       title: 'Confirmed Bookings',
       value: stats.confirmedBookings,
       icon: CheckCircle2,
-      color: 'from-sky-500 to-blue-600',
       bgColor: 'bg-sky-50',
       textColor: 'text-sky-700',
       borderColor: 'border-sky-200',
@@ -50,7 +46,6 @@ export default function StatsCards({ stats, loading = false }: StatsCardsProps) 
       title: 'Completed Bookings',
       value: stats.completedBookings,
       icon: CheckCheck,
-      color: 'from-emerald-500 to-teal-600',
       bgColor: 'bg-emerald-50',
       textColor: 'text-emerald-700',
       borderColor: 'border-emerald-200',
@@ -60,12 +55,10 @@ export default function StatsCards({ stats, loading = false }: StatsCardsProps) 
       title: 'Total Revenue',
       value: `₹${(stats.totalRevenue || 0).toLocaleString('en-IN')}`,
       icon: IndianRupee,
-      color: 'from-[#C66A24] to-[#642F35]',
       bgColor: 'bg-orange-50/60',
       textColor: 'text-[#C66A24]',
       borderColor: 'border-[#B89555]/30',
       subtext: 'Recorded booking value',
-      isRevenue: true,
     },
   ];
 
@@ -115,7 +108,6 @@ export default function StatsCards({ stats, loading = false }: StatsCardsProps) 
               </p>
             </div>
 
-            {/* Subtle decorative temple bottom border accent */}
             <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-[#B89555]/30 to-transparent group-hover:via-[#C66A24] transition-all" />
           </div>
         );

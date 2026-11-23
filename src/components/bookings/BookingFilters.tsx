@@ -111,14 +111,13 @@ export default function BookingFilters({
         </div>
       </div>
 
-      {/* Results Count & Quick Filter Badges */}
+      {/* Results Count & Quick Status Tabs */}
       <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 border-t border-[#EAE1D4]/60 pt-3 text-xs text-[#8B7B70]">
         <span>
           Showing <strong className="text-[#34251E] font-semibold">{totalFiltered}</strong>{' '}
           devotional booking records
         </span>
 
-        {/* Quick status tabs */}
         <div className="flex flex-wrap items-center gap-1.5">
           {statuses.map((st) => {
             const isSelected = statusFilter === st;
@@ -126,11 +125,10 @@ export default function BookingFilters({
               <button
                 key={st}
                 onClick={() => onStatusChange(st)}
-                className={`rounded-lg px-2.5 py-1 text-xs transition-colors ${
-                  isSelected
-                    ? 'bg-[#C66A24] text-white font-medium shadow-xs'
-                    : 'bg-[#FAF7F0] text-[#8B7B70] hover:text-[#34251E] hover:bg-stone-200/50'
-                }`}
+                className={`rounded-lg px-2.5 py-1 text-xs transition-colors ${isSelected
+                  ? 'bg-[#C66A24] text-white font-medium shadow-xs'
+                  : 'bg-[#FAF7F0] text-[#8B7B70] hover:text-[#34251E] hover:bg-stone-200/50'
+                  }`}
               >
                 {st}
               </button>

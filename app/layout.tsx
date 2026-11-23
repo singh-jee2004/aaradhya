@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { TempleStatusProvider } from "@/context/TempleStatusContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,7 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[#FAF7F0] text-[#34251E] font-sans">
-        {children}
+        <TempleStatusProvider>
+          {children}
+        </TempleStatusProvider>
       </body>
     </html>
   );

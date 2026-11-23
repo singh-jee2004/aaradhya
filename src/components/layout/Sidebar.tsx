@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -27,7 +29,7 @@ export default function Sidebar({
 }: SidebarProps) {
   const pathname = usePathname();
 
-  const isOverview = pathname === '/' && (!selectedStatusFilter || selectedStatusFilter === 'All');
+  const isSettings = pathname === '/settings';
 
   const navItems = [
     {
@@ -96,8 +98,12 @@ export default function Sidebar({
         {/* Brand Header */}
         <div className="flex h-20 items-center justify-between border-b border-[#EAE1D4] px-6">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#C66A24] to-[#E58A38] text-white shadow-md shadow-[#C66A24]/20 ring-1 ring-[#C66A24]/30 group-hover:scale-105 transition-transform duration-200">
-              <Sparkles size={22} className="animate-pulse" />
+            <div className="relative flex h-11 w-11 items-center justify-center rounded-xl overflow-hidden bg-gradient-to-br from-[#34251E] via-[#5C2E1F] to-[#C66A24] p-0.5 shadow-md shadow-[#C66A24]/25 ring-1.5 ring-[#C66A24]/40 group-hover:scale-105 transition-transform duration-200">
+              <img
+                src="/images/ram-transparent.png"
+                alt="Aaradhya Setu"
+                className="h-full w-full object-contain filter drop-shadow-[0_0_6px_rgba(255,165,0,0.7)]"
+              />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
@@ -173,18 +179,33 @@ export default function Sidebar({
             Administration
           </div>
 
-          <div className="group flex cursor-not-allowed items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium text-stone-400">
+          <Link
+            href="/settings"
+            onClick={() => setMobileOpen(false)}
+            className={`group flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all duration-150 ${
+              isSettings
+                ? 'bg-[#C66A24] text-white shadow-md shadow-[#C66A24]/25'
+                : 'text-[#34251E] hover:bg-white hover:text-[#C66A24] hover:shadow-xs'
+            }`}
+          >
             <div className="flex items-center gap-3">
-              <Settings size={18} className="text-stone-400" />
+              <Settings
+                size={18}
+                className={isSettings ? 'text-white' : 'text-[#8B7B70] group-hover:text-[#C66A24]'}
+              />
               <span>Settings</span>
             </div>
-            <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-semibold text-stone-500">
-              Demo
-            </span>
-          </div>
+            {isSettings ? (
+              <span className="h-2 w-2 rounded-full bg-white shadow-xs" />
+            ) : (
+              <span className="rounded-md bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-semibold text-[#C66A24] border border-[#B89555]/30">
+                Active
+              </span>
+            )}
+          </Link>
         </div>
 
-        {/* Sacred Identity Footer */}
+        {/* Administrator Profile Card */}
         <div className="border-t border-[#EAE1D4] p-4 bg-white/50">
           <div className="flex items-center gap-3 rounded-xl bg-white p-3 border border-[#EAE1D4] shadow-xs">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FAF7F0] border border-[#B89555]/40 text-[#C66A24] font-serif font-bold text-sm">

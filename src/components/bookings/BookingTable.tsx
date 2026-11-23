@@ -1,7 +1,7 @@
 import React from 'react';
 import { IBooking, BookingStatus } from '@/types/booking';
 import StatusBadge from './StatusBadge';
-import { Eye, Calendar, Mail, Phone, ArrowUpDown } from 'lucide-react';
+import { Eye, Calendar } from 'lucide-react';
 
 interface BookingTableProps {
   bookings: IBooking[];
@@ -46,8 +46,12 @@ export default function BookingTable({
   if (bookings.length === 0) {
     return (
       <div className="rounded-2xl border border-[#EAE1D4] bg-white p-12 text-center shadow-xs">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-500/10 border border-[#B89555]/30 text-[#C66A24]">
-          ॥ ॐ ॥
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#34251E] border border-[#B89555]/40 p-2 shadow-sm">
+          <img
+            src="/images/ram-transparent.png"
+            alt="No records"
+            className="h-full w-full object-contain filter drop-shadow-[0_0_8px_rgba(255,165,0,0.6)]"
+          />
         </div>
         <h3 className="font-serif text-lg font-bold text-[#34251E] mt-4">
           No bookings found
@@ -67,7 +71,6 @@ export default function BookingTable({
 
   return (
     <div className="rounded-2xl border border-[#EAE1D4] bg-white shadow-xs overflow-hidden">
-      {/* Table for Desktop & Tablet */}
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
@@ -88,12 +91,10 @@ export default function BookingTable({
                 className="hover:bg-[#FAF7F0]/40 transition-colors group cursor-pointer"
                 onClick={() => onViewBooking(booking)}
               >
-                {/* Booking ID */}
                 <td className="py-4 px-5 font-mono font-medium text-[#C66A24]">
                   {booking.bookingId}
                 </td>
 
-                {/* Devotee */}
                 <td className="py-4 px-5">
                   <div className="font-semibold text-sm text-[#34251E]">
                     {booking.devoteeName}
@@ -103,12 +104,10 @@ export default function BookingTable({
                   </div>
                 </td>
 
-                {/* Puja */}
                 <td className="py-4 px-5 font-serif font-medium text-sm text-[#34251E]">
                   {booking.pujaName}
                 </td>
 
-                {/* Booking Date */}
                 <td className="py-4 px-5 text-[#8B7B70]">
                   <div className="inline-flex items-center gap-1.5">
                     <Calendar size={13} className="text-[#B89555]" />
@@ -118,19 +117,16 @@ export default function BookingTable({
                   </div>
                 </td>
 
-                {/* Amount */}
                 <td className="py-4 px-5">
                   <span className="font-semibold text-sm text-[#34251E]">
                     ₹{(booking.amount || 0).toLocaleString('en-IN')}
                   </span>
                 </td>
 
-                {/* Status */}
                 <td className="py-4 px-5" onClick={(e) => e.stopPropagation()}>
                   <StatusBadge status={booking.status} />
                 </td>
 
-                {/* Actions */}
                 <td
                   className="py-4 px-5 text-right"
                   onClick={(e) => e.stopPropagation()}

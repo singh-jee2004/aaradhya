@@ -3,7 +3,6 @@ import Link from 'next/link';
 import {
   Menu,
   Search,
-  Bell,
   Calendar as CalendarIcon,
   Sparkles,
   ChevronRight,
@@ -91,8 +90,14 @@ export default function Header({
         </div>
 
         {/* Puja Darshan / Active Indicator */}
-        <div className="flex items-center gap-2 rounded-xl bg-amber-500/10 border border-[#B89555]/30 px-2.5 py-1 text-xs font-medium text-[#C66A24]">
-          <Sparkles size={14} className="text-[#C66A24]" />
+        <div className="flex items-center gap-2 rounded-xl bg-amber-500/10 border border-[#B89555]/30 px-2 py-1 text-xs font-medium text-[#C66A24]">
+          <div className="h-5 w-5 overflow-hidden rounded-md bg-[#34251E] flex items-center justify-center p-0.5">
+            <img
+              src="/images/ram-transparent.png"
+              alt="Darshan Live"
+              className="h-full w-full object-contain"
+            />
+          </div>
           <span className="hidden sm:inline">Temple Live</span>
         </div>
 
