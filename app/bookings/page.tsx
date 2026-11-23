@@ -9,6 +9,8 @@ import BookingDetails from '@/components/bookings/BookingDetails';
 import { IBooking } from '@/types/booking';
 import { RefreshCw } from 'lucide-react';
 
+import BowLoader from '@/components/ui/BowLoader';
+
 function BookingsPageContent() {
   const searchParams = useSearchParams();
   const initialStatus = searchParams.get('status') || 'All Statuses';
@@ -156,7 +158,13 @@ function BookingsPageContent() {
 
 export default function BookingsPage() {
   return (
-    <Suspense fallback={<div className="p-8 text-center text-xs">Loading bookings...</div>}>
+    <Suspense
+      fallback={
+        <div className="p-16 flex flex-col items-center justify-center">
+          <BowLoader label="Loading Devotee Bookings" size="md" />
+        </div>
+      }
+    >
       <BookingsPageContent />
     </Suspense>
   );

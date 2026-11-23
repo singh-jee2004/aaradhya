@@ -2,6 +2,7 @@ import React from 'react';
 import { IBooking, BookingStatus } from '@/types/booking';
 import StatusBadge from './StatusBadge';
 import { Eye, Calendar } from 'lucide-react';
+import BowLoader from '@/components/ui/BowLoader';
 
 interface BookingTableProps {
   bookings: IBooking[];
@@ -32,13 +33,11 @@ export default function BookingTable({
 
   if (loading) {
     return (
-      <div className="rounded-2xl border border-[#EAE1D4] bg-white p-6 shadow-xs">
-        <div className="animate-pulse space-y-4">
-          <div className="h-10 bg-stone-100 rounded-xl w-full" />
-          {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className="h-14 bg-stone-50 rounded-xl w-full" />
-          ))}
-        </div>
+      <div className="rounded-2xl border border-[#EAE1D4]/70 bg-white/45 backdrop-blur-md p-12 shadow-xs flex flex-col items-center justify-center min-h-[320px]">
+        <BowLoader label="Synchronizing Seva Records" size="md" />
+        <p className="text-[11px] text-[#8B7B70] mt-2">
+          Retrieving sacred devotee bookings from temple database...
+        </p>
       </div>
     );
   }

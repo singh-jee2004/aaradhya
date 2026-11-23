@@ -205,21 +205,26 @@ export default function Sidebar({
           </Link>
         </div>
 
-        {/* Administrator Profile Card */}
+        {/* Administrator Profile Card - Clickable to Settings */}
         <div className="border-t border-[#EAE1D4]/80 p-4 bg-white/30 backdrop-blur-sm">
-          <div className="flex items-center gap-3 rounded-xl bg-white/60 p-3 border border-[#EAE1D4]/80 shadow-xs">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FAF7F0] border border-[#B89555]/40 text-[#C66A24] font-serif font-bold text-sm">
+          <Link
+            href="/settings"
+            onClick={() => setMobileOpen(false)}
+            title="Open Temple Settings & Preferences"
+            className="group flex items-center gap-3 rounded-xl bg-white/60 p-3 border border-[#EAE1D4]/80 shadow-xs hover:bg-white hover:border-[#C66A24]/40 hover:shadow-md transition-all cursor-pointer"
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FAF7F0] border border-[#B89555]/40 text-[#C66A24] font-serif font-bold text-sm group-hover:scale-105 transition-transform">
               AS
             </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-xs font-semibold text-[#34251E]">
+              <p className="truncate text-xs font-semibold text-[#34251E] group-hover:text-[#C66A24] transition-colors">
                 Chief Temple Administrator
               </p>
               <p className="truncate text-[11px] text-[#8B7B70]">
                 admin@aaradhyasetu.org
               </p>
             </div>
-          </div>
+          </Link>
         </div>
       </aside>
     </>

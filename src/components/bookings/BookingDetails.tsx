@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { IBooking, BookingStatus } from '@/types/booking';
 import StatusBadge from './StatusBadge';
+import BowLoader from '@/components/ui/BowLoader';
 import {
   X,
   Calendar,
@@ -243,6 +244,12 @@ export default function BookingDetails({
                 Status updates are persisted instantly to the database.
               </p>
             </div>
+
+            {updating && (
+              <div className="py-2">
+                <BowLoader label="Committing to Database" size="sm" />
+              </div>
+            )}
 
             <div className="mt-4 grid grid-cols-2 gap-2">
               {statuses.map((st) => {

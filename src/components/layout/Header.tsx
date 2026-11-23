@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Menu,
@@ -8,6 +8,11 @@ import {
   Calendar as CalendarIcon,
   Sparkles,
   ChevronRight,
+  User,
+  Settings,
+  ShieldCheck,
+  Bell,
+  ExternalLink,
 } from 'lucide-react';
 import { useTempleStatus } from '@/context/TempleStatusContext';
 
@@ -27,6 +32,19 @@ export default function Header({
   onMenuClick,
 }: HeaderProps) {
   const { isTempleLive, toggleTempleLive } = useTempleStatus();
+  const [profileOpen, setProfileOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setProfileOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const today = new Intl.DateTimeFormat('en-IN', {
     weekday: 'short',
@@ -127,12 +145,92 @@ export default function Header({
           </div>
         </Link>
 
-        {/* Administrator Profile Placeholder */}
-        <div className="flex items-center gap-2.5 pl-2 border-l border-[#EAE1D4]">
-          <div className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-tr from-[#642F35] to-[#C66A24] text-white font-serif font-bold text-xs shadow-xs">
+        {/* Administrator Profile Menu */}
+        <div className="relative pl-2 border-l border-[#EAE1D4]" ref={dropdownRef}>
+          <button
+            onClick={() => setProfileOpen(!profileOpen)}
+            className="group relative flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-tr from-[#642F35] to-[#C66A24] text-white font-serif font-bold text-xs shadow-xs hover:ring-2 hover:ring-[#C66A24]/40 hover:scale-105 transition-all cursor-pointer"
+            aria-label="Admin Profile Menu"
+          >
             A
-            <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-emerald-500" />
-          </div>
+            <span
+              className={`absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-white ${
+                isTempleLive ? 'bg-emerald-500' : 'bg-amber-500'
+              }`}
+            />
+          </button>
+
+          {/* Interactive Dropdown Menu */}
+          {profileOpen && (
+            <div className="absolute right-0 mt-3 w-64 rounded-2xl border border-[#EAE1D4] bg-white/95 backdrop-blur-xl p-3 shadow-xl shadow-stone-900/10 z-50 animate-fade-in divide-y divide-[#EAE1D4]/60">
+              {/* User Identity Info */}
+              <div className="pb-3 px-2 pt-1">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#642F35] to-[#C66A24] text-white font-serif font-bold text-sm shadow-xs">
+                    A
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-serif text-xs font-bold text-[#34251E] truncate">
+                      Tushar Singh
+                    </p>
+                    <p className="text-[10px] text-[#8B7B70] truncate">
+                      Head Seva Administrator
+                    </p>
+                    <div className="flex items-center gap-1.5 mt-1">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                      <span className="text-[10px] font-semibold text-emerald-700">
+                        Admin Session Active
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Links & Shortcuts */}
+              <div className="py-2 space-y-0.5">
+                <Link
+                  href="/settings"
+                  onClick={() => setProfileOpen(false)}
+                  className="flex items-center gap-2.5 rounded-xl px-2.5 py-2 text-xs font-medium text-[#34251E] hover:bg-[#FAF7F0] hover:text-[#C66A24] transition-colors"
+                >
+                  <Settings size={14} className="text-[#8B7B70]" />
+                  <span>Platform Settings</span>
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    toggleTempleLive();
+                    setProfileOpen(false);
+                  }}
+                  className="w-full flex items-center justify-between rounded-xl px-2.5 py-2 text-xs font-medium text-[#34251E] hover:bg-[#FAF7F0] hover:text-[#C66A24] transition-colors text-left"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <ShieldCheck size={14} className="text-[#8B7B70]" />
+                    <span>Darshan Status</span>
+                  </div>
+                  <span
+                    className={`text-[10px] font-bold px-1.5 py-0.5 rounded-md ${
+                      isTempleLive
+                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                        : 'bg-stone-100 text-stone-600 border border-stone-200'
+                    }`}
+                  >
+                    {isTempleLive ? 'Live' : 'Offline'}
+                  </span>
+                </button>
+
+                <Link
+                  href="/bookings"
+                  onClick={() => setProfileOpen(false)}
+                  className="flex items-center gap-2.5 rounded-xl px-2.5 py-2 text-xs font-medium text-[#34251E] hover:bg-[#FAF7F0] hover:text-[#C66A24] transition-colors"
+                >
+                  <Bell size={14} className="text-[#8B7B70]" />
+                  <span>Seva Approvals</span>
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </header>
