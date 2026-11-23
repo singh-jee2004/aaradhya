@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAF7F0;
+  --foreground: #34251E;
+
+  /* Aaradhya Setu Color Palette */
+  --warm-ivory: #FAF7F0;
+  --pure-white: #FFFFFF;
+  --deep-saffron: #C66A24;
+  --deep-saffron-hover: #AF5B1C;
+  --temple-orange: #E58A38;
+  --antique-gold: #B89555;
+  --deep-maroon: #642F35;
+  --dark-brown: #34251E;
+  --muted-brown: #8B7B70;
+  --border-beige: #EAE1D4;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  --color-warm-ivory: #FAF7F0;
+  --color-pure-white: #FFFFFF;
+  --color-deep-saffron: #C66A24;
+  --color-deep-saffron-hover: #AF5B1C;
+  --color-temple-orange: #E58A38;
+  --color-antique-gold: #B89555;
+  --color-deep-maroon: #642F35;
+  --color-dark-brown: #34251E;
+  --color-muted-brown: #8B7B70;
+  --color-border-beige: #EAE1D4;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF7F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #EAE1D4;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B89555;
 }
