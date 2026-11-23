@@ -31,7 +31,7 @@ export default function BookingFilters({
   const hasActiveFilters = searchTerm !== '' || statusFilter !== 'All Statuses';
 
   return (
-    <div className="rounded-2xl border border-[#EAE1D4] bg-white p-4 sm:p-5 shadow-xs mb-6">
+    <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-4 sm:p-5 shadow-xs mb-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         {/* Search Input */}
         <div className="relative flex-1">

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
+import { useTempleStatus } from '@/context/TempleStatusContext';
 import {
   Settings,
   Bell,
@@ -13,9 +14,12 @@ import {
   Save,
   CheckCircle2,
   RefreshCw,
+  Radio,
+  Power,
 } from 'lucide-react';
 
 export default function SettingsPage() {
+  const { isTempleLive, toggleTempleLive, setTempleLive } = useTempleStatus();
   const [templeName, setTempleName] = useState('Aaradhya Setu Central Temple');
   const [adminEmail, setAdminEmail] = useState('admin@aaradhyasetu.org');
   const [supportPhone, setSupportPhone] = useState('+91 98765 00000');
@@ -51,7 +55,7 @@ export default function SettingsPage() {
     <DashboardLayout pageTitle="Temple Settings & Preferences" breadcrumb="Settings">
       <div className="max-w-4xl space-y-6">
         {/* Header Notice */}
-        <div className="rounded-2xl border border-[#EAE1D4] bg-white p-6 shadow-xs">
+        <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-6 shadow-xs">
           <div className="flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-50 border border-orange-200 text-[#C66A24]">
               <Settings size={22} />
@@ -74,9 +78,80 @@ export default function SettingsPage() {
           </div>
         )}
 
+        {/* Temple Darshan Live / Offline Operational Status Card */}
+        <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-6 shadow-xs space-y-4">
+          <div className="border-b border-[#EAE1D4]/60 pb-3 flex items-center justify-between">
+            <div>
+              <h3 className="font-serif text-base font-bold text-[#34251E] flex items-center gap-2">
+                <Radio size={16} className={isTempleLive ? 'text-[#C66A24]' : 'text-stone-400'} />
+                Temple Darshan Operational Status
+              </h3>
+              <p className="text-xs text-[#8B7B70] mt-0.5">
+                Toggle the live darshan and ceremony status broadcast across the devotee booking portal.
+              </p>
+            </div>
+
+            <span
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+                isTempleLive
+                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                  : 'bg-stone-100 text-stone-600 border border-stone-200'
+              }`}
+            >
+              <span
+                className={`h-2 w-2 rounded-full ${
+                  isTempleLive ? 'bg-emerald-500 animate-pulse' : 'bg-stone-400'
+                }`}
+              />
+              {isTempleLive ? 'Temple Live' : 'Temple Offline'}
+            </span>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border border-[#EAE1D4] bg-[#FAF7F0]/40">
+            <div className="flex items-center gap-3.5">
+              <div
+                className={`flex h-12 w-12 items-center justify-center rounded-xl p-1 shadow-xs transition-all ${
+                  isTempleLive
+                    ? 'bg-[#34251E] ring-2 ring-[#C66A24]/40'
+                    : 'bg-stone-400 grayscale opacity-80'
+                }`}
+              >
+                <img
+                  src="/images/ram-transparent.png"
+                  alt="Temple Status"
+                  className="h-full w-full object-contain filter drop-shadow-[0_0_6px_rgba(255,165,0,0.6)]"
+                />
+              </div>
+              <div>
+                <div className="font-serif text-sm font-bold text-[#34251E]">
+                  {isTempleLive ? 'Temple Darshan is currently LIVE' : 'Temple Darshan is currently OFFLINE'}
+                </div>
+                <p className="text-xs text-[#8B7B70] max-w-md mt-0.5">
+                  {isTempleLive
+                    ? 'Active ceremonies, aarti, and real-time seva registrations are currently accepting devotees.'
+                    : 'The temple gates and darshan stream are offline for maintenance or night rest (Vishram).'}
+                </p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={toggleTempleLive}
+              className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all shadow-xs ${
+                isTempleLive
+                  ? 'bg-rose-50 text-rose-700 border border-rose-300 hover:bg-rose-100'
+                  : 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-emerald-600/20'
+              }`}
+            >
+              <Power size={14} />
+              <span>{isTempleLive ? 'Set Temple Offline' : 'Set Temple Live'}</span>
+            </button>
+          </div>
+        </div>
+
         <form onSubmit={handleSaveSettings} className="space-y-6">
           {/* Section 1: Temple / Trust Profile */}
-          <div className="rounded-2xl border border-[#EAE1D4] bg-white p-6 shadow-xs space-y-4">
+          <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-6 shadow-xs space-y-4">
             <div className="border-b border-[#EAE1D4]/60 pb-3">
               <h3 className="font-serif text-base font-bold text-[#34251E] flex items-center gap-2">
                 <Building size={16} className="text-[#C66A24]" />
@@ -133,7 +208,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Section 2: Notification Preferences */}
-          <div className="rounded-2xl border border-[#EAE1D4] bg-white p-6 shadow-xs space-y-4">
+          <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-6 shadow-xs space-y-4">
             <div className="border-b border-[#EAE1D4]/60 pb-3">
               <h3 className="font-serif text-base font-bold text-[#34251E] flex items-center gap-2">
                 <Bell size={16} className="text-[#C66A24]" />
@@ -182,7 +257,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Section 3: Seva Coordination Rules */}
-          <div className="rounded-2xl border border-[#EAE1D4] bg-white p-6 shadow-xs space-y-4">
+          <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-6 shadow-xs space-y-4">
             <div className="border-b border-[#EAE1D4]/60 pb-3">
               <h3 className="font-serif text-base font-bold text-[#34251E] flex items-center gap-2">
                 <Shield size={16} className="text-[#C66A24]" />

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import {
@@ -7,6 +9,7 @@ import {
   Sparkles,
   ChevronRight,
 } from 'lucide-react';
+import { useTempleStatus } from '@/context/TempleStatusContext';
 
 interface HeaderProps {
   pageTitle: string;
@@ -23,6 +26,8 @@ export default function Header({
   onSearchChange,
   onMenuClick,
 }: HeaderProps) {
+  const { isTempleLive, toggleTempleLive } = useTempleStatus();
+
   const today = new Intl.DateTimeFormat('en-IN', {
     weekday: 'short',
     day: 'numeric',
@@ -89,17 +94,38 @@ export default function Header({
           <span>{today}</span>
         </div>
 
-        {/* Puja Darshan / Active Indicator */}
-        <div className="flex items-center gap-2 rounded-xl bg-amber-500/10 border border-[#B89555]/30 px-2 py-1 text-xs font-medium text-[#C66A24]">
-          <div className="h-5 w-5 overflow-hidden rounded-md bg-[#34251E] flex items-center justify-center p-0.5">
+        {/* Puja Darshan / Live or Offline Indicator with quick click to toggle or navigate to settings */}
+        <Link
+          href="/settings"
+          title="Click to manage Temple Live / Offline status in Settings"
+          className={`flex items-center gap-2 rounded-xl px-2.5 py-1 text-xs font-medium transition-all ${
+            isTempleLive
+              ? 'bg-amber-500/10 border border-[#B89555]/40 text-[#C66A24] hover:bg-amber-500/20'
+              : 'bg-stone-200/70 border border-stone-300 text-stone-600 hover:bg-stone-300/60'
+          }`}
+        >
+          <div
+            className={`h-5 w-5 overflow-hidden rounded-md flex items-center justify-center p-0.5 ${
+              isTempleLive ? 'bg-[#34251E]' : 'bg-stone-500 grayscale opacity-80'
+            }`}
+          >
             <img
               src="/images/ram-transparent.png"
-              alt="Darshan Live"
+              alt="Darshan"
               className="h-full w-full object-contain"
             />
           </div>
-          <span className="hidden sm:inline">Temple Live</span>
-        </div>
+          <div className="flex items-center gap-1.5">
+            <span
+              className={`h-1.5 w-1.5 rounded-full ${
+                isTempleLive ? 'bg-emerald-500 animate-pulse' : 'bg-stone-400'
+              }`}
+            />
+            <span className="hidden sm:inline font-semibold">
+              {isTempleLive ? 'Temple Live' : 'Temple Offline'}
+            </span>
+          </div>
+        </Link>
 
         {/* Administrator Profile Placeholder */}
         <div className="flex items-center gap-2.5 pl-2 border-l border-[#EAE1D4]">

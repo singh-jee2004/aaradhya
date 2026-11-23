@@ -26,7 +26,19 @@ export default function DashboardLayout({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#FAF7F0] text-[#34251E]">
+    <div className="relative min-h-screen bg-[#FAF7F0] text-[#34251E] overflow-x-hidden">
+      {/* Sacred Ganesh Ji Background Watermark - Balanced & Distinct */}
+      <div
+        aria-hidden="true"
+        className="fixed inset-0 pointer-events-none z-0 flex items-center justify-center lg:left-72 overflow-hidden select-none"
+      >
+        <img
+          src="/images/ganesh-watermark.png"
+          alt=""
+          className="w-[500px] max-w-[75vw] sm:w-[600px] lg:w-[680px] opacity-[0.16] object-contain filter drop-shadow-[0_0_16px_rgba(180,83,9,0.25)] mix-blend-multiply"
+        />
+      </div>
+
       {/* Sidebar Navigation */}
       <Sidebar
         mobileOpen={mobileOpen}
@@ -35,8 +47,8 @@ export default function DashboardLayout({
         onSelectStatusFilter={onSelectStatusFilter}
       />
 
-      {/* Main Content Area */}
-      <div className="flex flex-col lg:pl-72 min-h-screen">
+        {/* Main Content Area */}
+        <div className="relative z-10 flex flex-col lg:pl-72 min-h-screen">
         <Header
           pageTitle={pageTitle}
           breadcrumb={breadcrumb}

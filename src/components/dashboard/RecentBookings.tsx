@@ -26,8 +26,8 @@ export default function RecentBookings({ bookings, onViewBooking }: RecentBookin
   };
 
   return (
-    <div className="rounded-2xl border border-[#EAE1D4] bg-white p-6 shadow-xs">
-      <div className="flex items-center justify-between pb-4 border-b border-[#EAE1D4]">
+    <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-6 shadow-xs">
+      <div className="flex items-center justify-between pb-4 border-b border-[#EAE1D4]/80">
         <div>
           <h2 className="font-serif text-lg font-bold text-[#34251E]">
             Recent Puja Bookings

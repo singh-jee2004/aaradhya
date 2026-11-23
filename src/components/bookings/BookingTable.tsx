@@ -70,11 +70,11 @@ export default function BookingTable({
   }
 
   return (
-    <div className="rounded-2xl border border-[#EAE1D4] bg-white shadow-xs overflow-hidden">
+    <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md shadow-xs overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-[#EAE1D4] bg-[#FAF7F0]/60 text-[11px] font-bold uppercase tracking-wider text-[#8B7B70]">
+            <tr className="border-b border-[#EAE1D4]/80 bg-[#FAF7F0]/80 text-[11px] font-bold uppercase tracking-wider text-[#8B7B70]">
               <th className="py-4 px-5">Booking ID</th>
               <th className="py-4 px-5">Devotee Details</th>
               <th className="py-4 px-5">Puja Name</th>
