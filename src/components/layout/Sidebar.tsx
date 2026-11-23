@@ -91,12 +91,12 @@ export default function Sidebar({
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 flex w-72 flex-col border-r border-[#EAE1D4] bg-[#FAF7F0] transition-transform duration-200 ease-in-out lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-50 flex w-72 flex-col border-r border-[#EAE1D4]/80 bg-[#FAF7F0]/80 backdrop-blur-xl transition-transform duration-200 ease-in-out lg:translate-x-0 ${
           mobileOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'
         }`}
       >
         {/* Brand Header */}
-        <div className="flex h-20 items-center justify-between border-b border-[#EAE1D4] px-6">
+        <div className="flex h-20 items-center justify-between border-b border-[#EAE1D4]/80 px-6">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative flex h-11 w-11 items-center justify-center rounded-xl overflow-hidden bg-gradient-to-br from-[#34251E] via-[#5C2E1F] to-[#C66A24] p-0.5 shadow-md shadow-[#C66A24]/25 ring-1.5 ring-[#C66A24]/40 group-hover:scale-105 transition-transform duration-200">
               <img
@@ -153,8 +153,8 @@ export default function Sidebar({
                 onClick={() => handleNavClick(item.filter)}
                 className={`group flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all duration-150 ${
                   isCurrent
-                    ? 'bg-[#C66A24] text-white shadow-md shadow-[#C66A24]/25'
-                    : 'text-[#34251E] hover:bg-white hover:text-[#C66A24] hover:shadow-xs'
+                    ? 'bg-[#C66A24]/90 text-white shadow-md shadow-[#C66A24]/20 backdrop-blur-xs'
+                    : 'text-[#34251E] hover:bg-white/60 hover:text-[#C66A24] hover:shadow-xs'
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -184,8 +184,8 @@ export default function Sidebar({
             onClick={() => setMobileOpen(false)}
             className={`group flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all duration-150 ${
               isSettings
-                ? 'bg-[#C66A24] text-white shadow-md shadow-[#C66A24]/25'
-                : 'text-[#34251E] hover:bg-white hover:text-[#C66A24] hover:shadow-xs'
+                ? 'bg-[#C66A24]/90 text-white shadow-md shadow-[#C66A24]/20 backdrop-blur-xs'
+                : 'text-[#34251E] hover:bg-white/60 hover:text-[#C66A24] hover:shadow-xs'
             }`}
           >
             <div className="flex items-center gap-3">
@@ -206,8 +206,8 @@ export default function Sidebar({
         </div>
 
         {/* Administrator Profile Card */}
-        <div className="border-t border-[#EAE1D4] p-4 bg-white/50">
-          <div className="flex items-center gap-3 rounded-xl bg-white p-3 border border-[#EAE1D4] shadow-xs">
+        <div className="border-t border-[#EAE1D4]/80 p-4 bg-white/30 backdrop-blur-sm">
+          <div className="flex items-center gap-3 rounded-xl bg-white/60 p-3 border border-[#EAE1D4]/80 shadow-xs">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FAF7F0] border border-[#B89555]/40 text-[#C66A24] font-serif font-bold text-sm">
               AS
             </div>

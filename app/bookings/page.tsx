@@ -104,7 +104,7 @@ function BookingsPageContent() {
 
           <button
             onClick={() => loadBookings()}
-            className="flex items-center gap-2 self-start sm:self-center rounded-xl border border-[#B89555]/50 bg-white px-3.5 py-2 text-xs font-semibold text-[#34251E] shadow-xs hover:border-[#C66A24] hover:text-[#C66A24] transition-all"
+            className="flex items-center gap-2 self-start sm:self-center rounded-xl border border-[#B89555]/50 bg-white/60 backdrop-blur-xs px-3.5 py-2 text-xs font-semibold text-[#34251E] shadow-xs hover:border-[#C66A24] hover:bg-white/80 hover:text-[#C66A24] transition-all"
           >
             <RefreshCw size={13} className={loading ? 'animate-spin text-[#C66A24]' : ''} />
             <span>Refresh</span>

@@ -31,7 +31,7 @@ export default function BookingFilters({
   const hasActiveFilters = searchTerm !== '' || statusFilter !== 'All Statuses';
 
   return (
-    <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-4 sm:p-5 shadow-xs mb-6">
+    <div className="rounded-2xl border border-[#EAE1D4]/70 bg-white/45 backdrop-blur-md p-4 sm:p-5 shadow-xs mb-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         {/* Search Input */}
         <div className="relative flex-1">
@@ -44,7 +44,7 @@ export default function BookingFilters({
             placeholder="Search by Booking ID, devotee name, or puja..."
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full rounded-xl border border-[#EAE1D4] bg-[#FAF7F0]/50 py-2.5 pl-10 pr-9 text-xs sm:text-sm text-[#34251E] placeholder-[#8B7B70] shadow-xs outline-none transition-all focus:border-[#C66A24] focus:bg-white focus:ring-2 focus:ring-[#C66A24]/20"
+            className="w-full rounded-xl border border-[#EAE1D4]/80 bg-[#FAF7F0]/30 py-2.5 pl-10 pr-9 text-xs sm:text-sm text-[#34251E] placeholder-[#8B7B70] shadow-xs outline-none transition-all focus:border-[#C66A24] focus:bg-white/60 focus:ring-2 focus:ring-[#C66A24]/20"
           />
           {searchTerm && (
             <button
@@ -91,7 +91,7 @@ export default function BookingFilters({
           {/* Asc/Desc Order Toggle */}
           <button
             onClick={onOrderToggle}
-            className="flex items-center gap-1 rounded-xl border border-[#EAE1D4] bg-white px-3 py-2 text-xs font-medium text-[#34251E] shadow-xs hover:border-[#B89555] hover:text-[#C66A24] transition-colors"
+            className="flex items-center gap-1 rounded-xl border border-[#EAE1D4]/80 bg-white/60 backdrop-blur-xs px-3 py-2 text-xs font-medium text-[#34251E] shadow-xs hover:border-[#B89555] hover:bg-white/80 hover:text-[#C66A24] transition-colors"
             title={`Sort Order: ${order === 'asc' ? 'Ascending' : 'Descending'}`}
           >
             <ArrowUpDown size={14} className="text-[#C66A24]" />
@@ -126,8 +126,8 @@ export default function BookingFilters({
                 key={st}
                 onClick={() => onStatusChange(st)}
                 className={`rounded-lg px-2.5 py-1 text-xs transition-colors ${isSelected
-                  ? 'bg-[#C66A24] text-white font-medium shadow-xs'
-                  : 'bg-[#FAF7F0] text-[#8B7B70] hover:text-[#34251E] hover:bg-stone-200/50'
+                  ? 'bg-[#C66A24]/90 text-white font-medium shadow-xs backdrop-blur-xs'
+                  : 'bg-[#FAF7F0]/40 text-[#8B7B70] hover:text-[#34251E] hover:bg-white/60'
                   }`}
               >
                 {st}

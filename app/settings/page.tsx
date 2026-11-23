@@ -55,7 +55,7 @@ export default function SettingsPage() {
     <DashboardLayout pageTitle="Temple Settings & Preferences" breadcrumb="Settings">
       <div className="max-w-4xl space-y-6">
         {/* Header Notice */}
-        <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-6 shadow-xs">
+        <div className="rounded-2xl border border-[#EAE1D4]/70 bg-white/45 backdrop-blur-md p-6 shadow-xs">
           <div className="flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-50 border border-orange-200 text-[#C66A24]">
               <Settings size={22} />
@@ -79,7 +79,7 @@ export default function SettingsPage() {
         )}
 
         {/* Temple Darshan Live / Offline Operational Status Card */}
-        <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-6 shadow-xs space-y-4">
+        <div className="rounded-2xl border border-[#EAE1D4]/70 bg-white/45 backdrop-blur-md p-6 shadow-xs space-y-4">
           <div className="border-b border-[#EAE1D4]/60 pb-3 flex items-center justify-between">
             <div>
               <h3 className="font-serif text-base font-bold text-[#34251E] flex items-center gap-2">
@@ -151,7 +151,7 @@ export default function SettingsPage() {
 
         <form onSubmit={handleSaveSettings} className="space-y-6">
           {/* Section 1: Temple / Trust Profile */}
-          <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-6 shadow-xs space-y-4">
+          <div className="rounded-2xl border border-[#EAE1D4]/70 bg-white/45 backdrop-blur-md p-6 shadow-xs space-y-4">
             <div className="border-b border-[#EAE1D4]/60 pb-3">
               <h3 className="font-serif text-base font-bold text-[#34251E] flex items-center gap-2">
                 <Building size={16} className="text-[#C66A24]" />
@@ -208,7 +208,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Section 2: Notification Preferences */}
-          <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-6 shadow-xs space-y-4">
+          <div className="rounded-2xl border border-[#EAE1D4]/70 bg-white/45 backdrop-blur-md p-6 shadow-xs space-y-4">
             <div className="border-b border-[#EAE1D4]/60 pb-3">
               <h3 className="font-serif text-base font-bold text-[#34251E] flex items-center gap-2">
                 <Bell size={16} className="text-[#C66A24]" />
@@ -257,7 +257,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Section 3: Seva Coordination Rules */}
-          <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-6 shadow-xs space-y-4">
+          <div className="rounded-2xl border border-[#EAE1D4]/70 bg-white/45 backdrop-blur-md p-6 shadow-xs space-y-4">
             <div className="border-b border-[#EAE1D4]/60 pb-3">
               <h3 className="font-serif text-base font-bold text-[#34251E] flex items-center gap-2">
                 <Shield size={16} className="text-[#C66A24]" />

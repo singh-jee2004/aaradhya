@@ -70,11 +70,11 @@ export default function BookingTable({
   }
 
   return (
-    <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md shadow-xs overflow-hidden">
+    <div className="rounded-2xl border border-[#EAE1D4]/70 bg-white/45 backdrop-blur-md shadow-xs overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-[#EAE1D4]/80 bg-[#FAF7F0]/80 text-[11px] font-bold uppercase tracking-wider text-[#8B7B70]">
+            <tr className="border-b border-[#EAE1D4]/60 bg-[#FAF7F0]/50 text-[11px] font-bold uppercase tracking-wider text-[#8B7B70]">
               <th className="py-4 px-5">Booking ID</th>
               <th className="py-4 px-5">Devotee Details</th>
               <th className="py-4 px-5">Puja Name</th>
@@ -133,7 +133,7 @@ export default function BookingTable({
                 >
                   <button
                     onClick={() => onViewBooking(booking)}
-                    className="inline-flex items-center gap-1 rounded-lg border border-[#EAE1D4] bg-white px-2.5 py-1.5 text-xs font-medium text-[#34251E] shadow-xs hover:border-[#C66A24] hover:text-[#C66A24] transition-colors"
+                    className="inline-flex items-center gap-1 rounded-lg border border-[#EAE1D4]/80 bg-white/60 backdrop-blur-xs px-2.5 py-1.5 text-xs font-medium text-[#34251E] shadow-xs hover:border-[#C66A24] hover:bg-white/90 hover:text-[#C66A24] transition-colors"
                   >
                     <Eye size={13} className="text-[#C66A24]" />
                     <span>Inspect</span>

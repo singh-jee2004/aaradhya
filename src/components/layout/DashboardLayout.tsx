@@ -35,7 +35,7 @@ export default function DashboardLayout({
         <img
           src="/images/ganesh-watermark.png"
           alt=""
-          className="w-[500px] max-w-[75vw] sm:w-[600px] lg:w-[680px] opacity-[0.16] object-contain filter drop-shadow-[0_0_16px_rgba(180,83,9,0.25)] mix-blend-multiply"
+          className="w-[520px] max-w-[80vw] sm:w-[620px] lg:w-[720px] opacity-[0.22] object-contain filter drop-shadow-[0_0_16px_rgba(180,83,9,0.3)] mix-blend-multiply"
         />
       </div>
 

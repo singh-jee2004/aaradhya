@@ -86,7 +86,7 @@ export default function StatsCards({ stats, loading = false }: StatsCardsProps) 
         return (
           <div
             key={card.title}
-            className="group relative overflow-hidden rounded-2xl bg-white/75 backdrop-blur-md p-5 border border-[#EAE1D4]/80 shadow-xs hover:shadow-md hover:border-[#B89555]/60 hover:bg-white/85 transition-all duration-200"
+            className="group relative overflow-hidden rounded-2xl bg-white/45 backdrop-blur-md p-5 border border-[#EAE1D4]/70 shadow-xs hover:shadow-md hover:border-[#B89555]/60 hover:bg-white/60 transition-all duration-200"
           >
             <div className="flex items-center justify-between">
               <span className="text-xs font-semibold tracking-wide text-[#8B7B70] uppercase">

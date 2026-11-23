@@ -30,8 +30,8 @@ export default function BookingChart({ bookings }: BookingChartProps) {
   ];
 
   return (
-    <div className="rounded-2xl border border-[#EAE1D4]/80 bg-white/75 backdrop-blur-md p-6 shadow-xs">
-      <div className="flex items-center justify-between pb-4 border-b border-[#EAE1D4]/80">
+    <div className="rounded-2xl border border-[#EAE1D4]/70 bg-white/45 backdrop-blur-md p-6 shadow-xs">
+      <div className="flex items-center justify-between pb-4 border-b border-[#EAE1D4]/60">
         <div>
           <h2 className="font-serif text-lg font-bold text-[#34251E] flex items-center gap-2">
             <ChartIcon size={18} className="text-[#C66A24]" />
