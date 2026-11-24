@@ -28,3 +28,19 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #B89555;
 }
+
+/* GPU Hardware Acceleration & Smooth 60fps Paint Optimization */
+.watermark-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Glassmorphism performance optimization */
+.backdrop-blur-md,
+.backdrop-blur-sm,
+.backdrop-blur-xl {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transform: translateZ(0);
+}

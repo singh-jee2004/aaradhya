@@ -9,7 +9,8 @@ import BookingTable from '@/components/bookings/BookingTable';
 import BookingFilters from '@/components/bookings/BookingFilters';
 import BookingDetails from '@/components/bookings/BookingDetails';
 import { IBooking, BookingStats } from '@/types/booking';
-import { Sparkles, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
+import { useDebounce } from '@/hooks/useDebounce';
 
 export default function OverviewPage() {
   const [bookings, setBookings] = useState<IBooking[]>([]);
@@ -27,6 +28,7 @@ export default function OverviewPage() {
 
   // Filters and Sorting
   const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearch = useDebounce(searchTerm, 250);
   const [statusFilter, setStatusFilter] = useState('All Statuses');
   const [sortBy, setSortBy] = useState('bookingDate');
   const [order, setOrder] = useState<'asc' | 'desc'>('desc');
@@ -42,7 +44,7 @@ export default function OverviewPage() {
     try {
       // 1. Fetch bookings
       const params = new URLSearchParams();
-      if (searchTerm) params.append('search', searchTerm);
+      if (debouncedSearch) params.append('search', debouncedSearch);
       if (statusFilter && statusFilter !== 'All Statuses') params.append('status', statusFilter);
       params.append('sortBy', sortBy);
       params.append('order', order);
@@ -71,7 +73,7 @@ export default function OverviewPage() {
     } finally {
       setLoading(false);
     }
-  }, [searchTerm, statusFilter, sortBy, order]);
+  }, [debouncedSearch, statusFilter, sortBy, order]);
 
   useEffect(() => {
     loadDashboardData();

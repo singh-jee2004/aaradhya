@@ -30,7 +30,7 @@ export default function DashboardLayout({
       {/* Sacred Ganesh Ji Background Watermark - Balanced & Distinct */}
       <div
         aria-hidden="true"
-        className="fixed inset-0 pointer-events-none z-0 flex items-center justify-center lg:left-72 overflow-hidden select-none"
+        className="watermark-layer fixed inset-0 pointer-events-none z-0 flex items-center justify-center lg:left-72 overflow-hidden select-none"
       >
         <img
           src="/images/ganesh-watermark.png"

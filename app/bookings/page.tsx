@@ -10,6 +10,7 @@ import { IBooking } from '@/types/booking';
 import { RefreshCw } from 'lucide-react';
 
 import BowLoader from '@/components/ui/BowLoader';
+import { useDebounce } from '@/hooks/useDebounce';
 
 function BookingsPageContent() {
   const searchParams = useSearchParams();
@@ -20,6 +21,7 @@ function BookingsPageContent() {
   const [error, setError] = useState<string | null>(null);
 
   const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearch = useDebounce(searchTerm, 250);
   const [statusFilter, setStatusFilter] = useState(initialStatus);
   const [sortBy, setSortBy] = useState('bookingDate');
   const [order, setOrder] = useState<'asc' | 'desc'>('desc');
@@ -40,7 +42,7 @@ function BookingsPageContent() {
     setError(null);
     try {
       const params = new URLSearchParams();
-      if (searchTerm) params.append('search', searchTerm);
+      if (debouncedSearch) params.append('search', debouncedSearch);
       if (statusFilter && statusFilter !== 'All Statuses') params.append('status', statusFilter);
       params.append('sortBy', sortBy);
       params.append('order', order);
@@ -59,7 +61,7 @@ function BookingsPageContent() {
     } finally {
       setLoading(false);
     }
-  }, [searchTerm, statusFilter, sortBy, order]);
+  }, [debouncedSearch, statusFilter, sortBy, order]);
 
   useEffect(() => {
     loadBookings();
